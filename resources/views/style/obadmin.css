@@ -59,12 +59,13 @@ h2 {
 
 .headright {
     float: right;
-    width: 200px;
+    width: 300px;
     color: #fff;
 }
 
 .headright a {
     color: #fff;
+    margin: 0 5px;
 }
 
 .admleft {

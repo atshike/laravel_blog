@@ -4,10 +4,14 @@
         <h3>修改密码</h3>
         <div class="updatepwd">
             <div class="msg">
-            @if(count($errors))
-                    @foreach($errors->all() as $error)
-                        {{$error}}<br />
-                    @endforeach
+                @if(count($errors))
+                    @if(is_object($errors))
+                        @foreach($errors->all() as $error)
+                            {{$error}}<br/>
+                        @endforeach
+                    @else
+                        {{$errors}}
+                    @endif
                 @endif
             </div>
             <ul>

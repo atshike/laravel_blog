@@ -4,7 +4,7 @@
     <header class="header">
         <h2 class="headh">后台管理</h2>
         <div class="headright">
-            欢迎登录： <a href="{{url('/admin/updatepwd')}}" target="main">[修改密码]</a> <a
+            欢迎登录：{{session('user')->name}} <a href="{{url('/admin/updatepwd')}}" target="main">[修改密码]</a> <a
                     href="{{url('/admin/quite')}}">[退出]</a>
         </div>
     </header>
