@@ -15,4 +15,31 @@ class ApiController extends Controller
     {
 
     }
+
+    /*
+     * 图片上传
+     */
+    public function upload(Request $request)
+    {
+        $file = $request->file('Filedata');
+        if ($file->isValid()) {
+            $entension = $file->getClientOriginalExtension();
+            $newName = date('YmdHis').mt_rand(100,999).'.'.$entension;
+            $path = $file->move(base_path() . '/uploads/images', $newName);
+            $filepath = 'uploads/images/'.$newName;
+            return $filepath;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

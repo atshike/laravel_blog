@@ -10,6 +10,8 @@ class Articles extends Model
      * 表名
      */
     protected $table = "articles";
+    public $timestamps=false;
+    protected $guarded=[];
 
     /*
      * @see https://laravel.com/docs/5.3/eloquent-relationships

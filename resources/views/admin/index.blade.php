@@ -27,16 +27,7 @@
                 </ul>
             </div>
         </div>
-            <iframe src="{{url('/admin/info')}}" width="100%" name="main" frameborder='0' onload="changeFrameHeight()" id="iframepage" scrolling="no"></iframe>
-        <script type="text/javascript" language="javascript">
-            function changeFrameHeight(){
-                var ifm= document.getElementById("iframepage");
-                ifm.height=document.documentElement.clientHeight;
-            }
-            window.onresize=function(){
-                changeFrameHeight();
-            }
-        </script>
+        <iframe id="main" name="main" width="100%" onload="this.height=main.document.body.scrollHeight" frameborder="0" src="{{url('/admin/info')}}"></iframe>
     </div>
 
 @endsection

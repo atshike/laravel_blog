@@ -30,8 +30,16 @@ Route::group(['middleware' => ['web', 'admin.login'],'prefix'=>'admin','namespac
     Route::get('/quite', "IndexController@quite");
     Route::get('/info', "IndexController@info");
     Route::any('/updatepwd', "IndexController@updatepwd");
-    Route::get('/addarticle', "IndexController@articleadd");
-    Route::get('/listarticle', "IndexController@articlelist");
-    Route::get('/addcolumn', "IndexController@columnadd");
-    Route::get('/listcolumn', "IndexController@columnlist");
+    Route::any('/upload', "ApiController@upload");
+
+    Route::get('/addarticle', "ArticleController@articleadd");
+    Route::any('/store', "ArticleController@store");
+    Route::get('/updatearticle', "ArticleController@updatearticle")->where('id', '[0-9]+');
+    Route::get('/listarticle', "ArticleController@articlelist");
+    Route::get('/deltarticle', "ArticleController@articledel");
+
+    Route::get('/addcolumn', "ColumnController@columnadd");
+    Route::get('/updatecolumn', "ColumnController@updatecolumn")->where('id', '[0-9]+');
+    Route::get('/listcolumn', "ColumnController@columnlist");
+    Route::get('/deltarticle', "ColumnController@articledel");
 });

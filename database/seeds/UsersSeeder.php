@@ -18,12 +18,6 @@ class UsersSeeder extends Seeder
             //'password' => bcrypt('secret'),
             'password' => \Illuminate\Support\Facades\Crypt::encrypt('123456'),
         ]);
-
-        DB::table('users')->insert([
-            'name' => 'test',
-            'email' => 'atshike@foxmail.com',
-            //'password' => bcrypt('secret'),
-            'password' => \Illuminate\Support\Facades\Crypt::encrypt('1111'),
-        ]);
+        
     }
 }

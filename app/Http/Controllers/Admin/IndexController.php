@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Articles;
+use App\Models\Columns;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -20,26 +22,6 @@ class IndexController extends ApiController
     public function info()
     {
         return view('admin.info');
-    }
-
-    public function articleadd()
-    {
-        return view('admin.addarticle');
-    }
-
-    public function articlelist()
-    {
-        return view('admin.listarticle');
-    }
-
-    public function columnadd()
-    {
-        return view('admin.addcolumn');
-    }
-
-    public function columnlist()
-    {
-        return view('admin.listcolumn');
     }
 
     public function quite()
