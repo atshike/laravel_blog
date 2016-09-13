@@ -24,7 +24,7 @@
                     <tr>
                         <td>分类：</td>
                         <td>
-                            <select>
+                            <select  name="columns_id">
                                 <option> -- 请选择 --</option>
                                 @foreach($data as $k)
                                     <option value="{{$k->id}}">{{$k->_title}}</option>

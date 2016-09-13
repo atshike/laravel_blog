@@ -8,6 +8,8 @@ class Columns extends Model
 {
     //
     protected $table = "columns";
+    public $timestamps=false;
+    protected $guarded=[];
 
     public function parentColumns()
     {

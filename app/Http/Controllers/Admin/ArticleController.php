@@ -36,7 +36,6 @@ class ArticleController extends ApiController
             return back()->with('errors', '添加失败！');
         }
         return redirect('admin/listarticle');
-
     }
 
     public function articlelist()

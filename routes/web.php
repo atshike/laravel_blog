@@ -39,6 +39,7 @@ Route::group(['middleware' => ['web', 'admin.login'],'prefix'=>'admin','namespac
     Route::delete('/deltarticle/{id}', "ArticleController@destroy")->where('id', '[0-9]+');
 
     Route::get('/addcolumn', "ColumnController@columnadd");
+    Route::post('/columnstore', "ColumnController@store");
     Route::get('/updatecolumn', "ColumnController@updatecolumn")->where('id', '[0-9]+');
     Route::get('/listcolumn', "ColumnController@columnlist");
     Route::delete('/deltarticle/{id}', "ColumnController@destroy")->where('id', '[0-9]+');

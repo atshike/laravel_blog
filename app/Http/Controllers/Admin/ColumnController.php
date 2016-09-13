@@ -14,7 +14,26 @@ class ColumnController extends ApiController
     //
     public function columnadd()
     {
-        return view('admin.addcolumn');
+        $data = Columns::columnshow(Columns::get(), 'title', 'id', 'type_id');
+        return view('admin.addcolumn', compact('data'));
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+        ], [
+            'title.required' => '标题不能为空',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+        $article = new Columns($request->except('_token'));
+        $article->save();
+        if (!$article->save()) {
+            return back()->with('errors', '添加失败！');
+        }
+        return redirect('admin/listcolumn');
     }
 
     public function columnlist()
