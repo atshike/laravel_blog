@@ -11,13 +11,32 @@ use Illuminate\Support\Facades\Validator;
 
 class ColumnController extends ApiController
 {
-    //
+    /*
+     * 栏目列表
+     * /listcolumn
+     */
+    public function columnlist()
+    {
+        $data = Columns::columnshow(Columns::get(), 'title', 'id', 'type_id');
+        $lists = Columns::orderBy('id', 'desc')->get();
+        return view('admin.listcolumn', compact('lists', 'data'));
+    }
+
+    /*
+     * 栏目添加
+     * /addcolumn
+     */
     public function columnadd()
     {
         $data = Columns::columnshow(Columns::get(), 'title', 'id', 'type_id');
         return view('admin.addcolumn', compact('data'));
     }
 
+    /*
+     * @param Request $request
+     * 栏目添加
+     * /columnstore
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -36,13 +55,11 @@ class ColumnController extends ApiController
         return redirect('admin/listcolumn');
     }
 
-    public function columnlist()
-    {
-        $data = Columns::columnshow(Columns::get(), 'title', 'id', 'type_id');
-        $lists = Columns::orderBy('id', 'desc')->get();
-        return view('admin.listcolumn', compact('lists', 'data'));
-    }
-
+    /*
+     * @param Request $request $id
+     * 栏目删除
+     * /deltarticle/{id}
+     */
     public function destroy(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -68,5 +85,32 @@ class ColumnController extends ApiController
             ];
         }
         return $data;
+    }
+
+    /*
+     * @param Request $requestId
+     * 栏目修改
+     * /editcolumn/{id}
+     */
+    public function edit($requestId)
+    {
+        $column = Columns::find($requestId);
+        $data = Columns::columnshow(Columns::get(), 'title', 'id', 'type_id');
+        return view('admin.editcolumn', compact('data', 'column'));
+    }
+
+    /*
+     * @param Request $request
+     * 栏目修改
+     * /updatecolumn/{id}
+     */
+    public function update(Request $request)
+    {
+        $columns = Columns::findOrFail($request->id);
+        $columns->fill($request->all());
+        if (!$columns->save()) {
+            return back()->with('errors', '删除失败！');
+        }
+        return redirect('admin/listcolumn');
     }
 }
