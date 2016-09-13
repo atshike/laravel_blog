@@ -33,10 +33,10 @@ Route::group(['middleware' => ['web', 'admin.login'],'prefix'=>'admin','namespac
     Route::any('/upload', "ApiController@upload");
 
     Route::get('/addarticle', "ArticleController@articleadd");
-    Route::any('/store', "ArticleController@store");
+    Route::post('/store', "ArticleController@store");
     Route::get('/updatearticle', "ArticleController@updatearticle")->where('id', '[0-9]+');
     Route::get('/listarticle', "ArticleController@articlelist");
-    Route::get('/deltarticle', "ArticleController@articledel");
+    Route::delete('/deltarticle/{id}', "ArticleController@destroy")->where('id', '[0-9]+');
 
     Route::get('/addcolumn', "ColumnController@columnadd");
     Route::get('/updatecolumn', "ColumnController@updatecolumn")->where('id', '[0-9]+');

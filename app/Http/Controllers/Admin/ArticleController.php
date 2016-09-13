@@ -44,4 +44,22 @@ class ArticleController extends ApiController
         $lists = Articles::orderBy('id', 'desc')->paginate(10);
         return view('admin.listarticle', compact('lists'));
     }
+
+    public function destroy(Request $request,$id)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ], [
+            'id.required' => '非法操作',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        $article = Articles::where('id',$id)->first();
+        if(!$article->delete()){
+            return back()->with('errors', '删除失败！');
+        }
+        return redirect('admin/listarticle');
+    }
 }
