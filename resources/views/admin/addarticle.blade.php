@@ -40,7 +40,6 @@
                         <td>图片：</td>
                         <td>
                             <input type="text" name="image_url" id="image_url" class="input">
-                            <script src="{{asset('resources/uploadify/jquery.js')}}" type="text/javascript"></script>
                             <input id="file_upload" name="file_upload" type="file" multiple="true">
                             <script src="{{asset('resources/uploadify/jquery.uploadify.min.js')}}" type="text/javascript"></script>
                             <link rel="stylesheet" type="text/css" href="{{asset('resources/uploadify/uploadify.css')}}">

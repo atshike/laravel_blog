@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>后台管理</title>
     <link rel="stylesheet" href="{{asset('resources/views/style/obadmin.css')}}">
+    <script src="{{asset('resources/uploadify/jquery.js')}}" type="text/javascript"></script>
 </head>
 <body>
 @yield('content')
