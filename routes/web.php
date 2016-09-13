@@ -34,13 +34,15 @@ Route::group(['middleware' => ['web', 'admin.login'],'prefix'=>'admin','namespac
 
     Route::get('/addarticle', "ArticleController@articleadd");
     Route::post('/store', "ArticleController@store");
-    Route::get('/updatearticle', "ArticleController@updatearticle")->where('id', '[0-9]+');
+    Route::get('/editarticle/{id}', "ArticleController@edit")->where('id', '[0-9]+');
+    Route::put('/updatearticle/{id}', 'ArticleController@update')->where('id', '[0-9]+');
     Route::get('/listarticle', "ArticleController@articlelist");
     Route::delete('/deltarticle/{id}', "ArticleController@destroy")->where('id', '[0-9]+');
 
     Route::get('/addcolumn', "ColumnController@columnadd");
     Route::post('/columnstore', "ColumnController@store");
-    Route::get('/updatecolumn', "ColumnController@updatecolumn")->where('id', '[0-9]+');
+    Route::get('/editcolumn', "ColumnController@edit");
+    Route::put('/updatecolumn/{id}', 'ColumnController@update');
     Route::get('/listcolumn', "ColumnController@columnlist");
     Route::delete('/deltarticle/{id}', "ColumnController@destroy")->where('id', '[0-9]+');
 });

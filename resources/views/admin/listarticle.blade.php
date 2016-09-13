@@ -11,7 +11,7 @@
                     <li>
                         <a href="{{url('/admin/updatecolumn?id='.$li->id)}}" title="{{$li->title}}">{{$li->title}}</a>
                             <span class="columnlistright">
-                            <a href="{{url('/admin/updatecolumn/'.$li->id)}}" title="{{$li->title}}">[修改]</a>
+                            <a href="{{url('/admin/editarticle/'.$li->id)}}" title="{{$li->title}}">[修改]</a>
                                 <form method="post" action="{{url('/admin/deltarticle/'.$li->id)}}"
                                       style="float: inherit">
                                     <input name="_method" type="hidden" value="delete">
