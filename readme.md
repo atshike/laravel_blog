@@ -10,10 +10,10 @@
 
 ## 修改配置文件(.env)
 
-DB_HOST=localhost
-DB_DATABASE=laravel_5_3
-DB_USERNAME=root
-DB_PASSWORD=
+- DB_HOST=localhost
+- DB_DATABASE=laravel_5_3
+- DB_USERNAME=root
+- DB_PASSWORD=
 
 
 ##安装
@@ -23,4 +23,4 @@ DB_PASSWORD=
 - 后台地址/login 用户名：atshike 密码：123456
 
 ##备注
-学习laravel框架
+学习laravel框架、后续功能持续开发中
