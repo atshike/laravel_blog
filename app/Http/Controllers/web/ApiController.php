@@ -15,7 +15,7 @@ class ApiController extends Controller
     //
     public function __construct()
     {
-        $menu = Columns::where('type_id', 0)->get();
+        $menu = Columns::where('type_id', 0)->paginate(5);
 
         View::share('menu',$menu);
 

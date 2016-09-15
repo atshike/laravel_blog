@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @package App\Models
  * @see https://laravel.com/docs/master/hashing
  */
-class Columns extends Model
+class Columns extends BaseModel
 {
     /**
      * 表名
@@ -21,9 +21,30 @@ class Columns extends Model
      */
     protected $primaryKey = 'id';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
+    /**
+     * 保护字段
+     * @var array
+     */
     protected $guarded = [];
+
+    /**
+     * 软删除
+     * @var boolean
+     */
+    protected $softDelete = true;
+
+    /**
+     * @see https://laravel.com/docs/5.3/eloquent-relationships
+     * 关联作者
+     * 一对多逆向
+     * @return object users
+     */
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Articles', 'columns_id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

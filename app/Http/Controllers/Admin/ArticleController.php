@@ -48,7 +48,7 @@ class ArticleController extends ApiController
             return back()->withErrors($validator);
         }
         $article = new Articles($request->except('_token'));
-        $article->create_time = time();
+        $article->create_time = \Carbon\Carbon::now();
         $article->save();
         if (!$article->save()) {
             return back()->with('errors', '添加失败！');
@@ -72,12 +72,20 @@ class ArticleController extends ApiController
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
-
         $article = Articles::where('id', $id)->first();
-        if (!$article->delete()) {
-            return back()->with('errors', '删除失败！');
+        if ($article->delete()) {
+            $data = [
+                'status' => 0,
+                'msg' => '删除成功！'
+            ];
+
+        } else {
+            $data = [
+                'status' => 1,
+                'msg' => '删除失败！'
+            ];
         }
-        return redirect('admin/listarticle');
+        return $data;
     }
 
     /*
@@ -88,7 +96,7 @@ class ArticleController extends ApiController
     {
         $articles = Articles::find($requestId);
         $data = Columns::columnshow(Columns::get(), 'title', 'id', 'type_id');
-        return view('admin.editarticle', compact('articles','data'));
+        return view('admin.editarticle', compact('articles', 'data'));
     }
 
     /*

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('sex')->default(0);
             $table->rememberToken();
             $table->timestamps();
+            $table->engine  = 'MyISAM';
         });
     }
 

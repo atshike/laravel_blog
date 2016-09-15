@@ -47,7 +47,7 @@
                     <tr>
                         <td height="20">&nbsp;</td>
                         <td>
-                            <input name="login" type="submit" id="login" class="login" value="登录">
+                            <button name="login" type="submit" id="login" class="login">登录</button>
                         </td>
                     </tr>
                     <tr>

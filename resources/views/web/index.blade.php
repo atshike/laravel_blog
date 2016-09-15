@@ -11,7 +11,7 @@
                     <li>[<a href="{{url('/list?id='.$v->columns_id)}}" title="{{$v->columns->title}}"
                             class="ilsa">{{$v->columns->title}}</a>]
                         <a href="{{url('/show?id='.$v->id)}}" title="{{$v->title}}" class="ilsb">{{$v->title}}</a>
-                        <span class="ilsc">时间：{{$v->created_at}} 浏览：{{$v->hit}}次</span>
+                        <span class="ilsc">时间：{{$v->create_time}} 浏览：{{$v->hit}}次</span>
                         <p>{{mb_substr($v->description,0,200)}}</p>
                     </li>
                 @endforeach

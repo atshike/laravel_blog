@@ -12,13 +12,7 @@
                         <a href="{{url('/admin/updatecolumn?id='.$li->id)}}" title="{{$li->title}}">{{$li->title}}</a>
                             <span class="columnlistright">
                             <a href="{{url('/admin/editarticle/'.$li->id)}}" title="{{$li->title}}">[修改]</a>
-                                <form method="post" action="{{url('/admin/deltarticle/'.$li->id)}}"
-                                      style="float: inherit">
-                                    <input name="_method" type="hidden" value="delete">
-                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <input name="id" type="hidden" value="{{$li->id}}">
-                                    <button type="submit">删除</button>
-                                </form>
+                            <a href="javascript:;" onclick="del('{{$li->id}}')">[删除]</a>
                             </span>
                     </li>
                 @endforeach
@@ -28,4 +22,24 @@
             {!! $lists->links() !!}
         </div>
     </div>
+    <script>
+        function del(id) {
+            if(window.confirm('你确定要删除吗？')){
+                $.post("{{url('/admin/deltarticle')}}/" + id, {
+                    '_method': 'delete',
+                    '_token': "{{csrf_token()}}",
+                    'id': id
+                }, function (data) {
+                    if (data.status == 0) {
+                        location.href = location.href;
+                        alert(data.msg);
+                    } else {
+                        alert(data.msg);
+                    }
+                });
+            }else{
+                return false;
+            }
+        }
+    </script>
 @endsection

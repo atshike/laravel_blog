@@ -7,7 +7,7 @@
         <h2>{{$shows->title}}</h2>
         <div class="wri">
             {{$shows->columns->title}} |
-            时间：{{$shows->created_at}} |
+            时间：{{$shows->create_time}} |
             浏览：{{$shows->hit}}
         </div>
         <div style="padding:20px; size:12px; border:1px solid #ccc; background:#ffeeee; margin:10px 0;">

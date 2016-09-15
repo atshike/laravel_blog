@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class Users extends BaseModel
 {
-    /** 
+    /**
      * 表名
      * @see https://laravel.com/docs/5.3/eloquent
      */
@@ -17,5 +17,17 @@ class Users extends Model
      */
     protected $primaryKey = 'id';
 
-    protected $timestamps = false;
+    public $timestamps = true;
+
+    /**
+     *
+     * @var array
+     */
+    protected $hidden = ['password'];
+
+    /**
+     * 软删除
+     * @var boolean
+     */
+    protected $softDelete = true;
 }

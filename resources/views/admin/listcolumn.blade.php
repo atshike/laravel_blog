@@ -22,7 +22,7 @@
     <script>
         function del(id) {
             if(window.confirm('你确定要删除吗？')){
-                $.post("{{url('/admin/deltarticle')}}/" + id, {
+                $.post("{{url('/admin/deltcolumn')}}/" + id, {
                     '_method': 'delete',
                     '_token': "{{csrf_token()}}",
                     'id': id

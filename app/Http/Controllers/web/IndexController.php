@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 
 class IndexController extends ApiController
 {
-    //
+    /**
+     * 博客首页
+     * @return Respanse
+     */
     public function index()
     {
         $list = Articles::orderBy('id', 'desc')->paginate(10);
@@ -18,6 +21,11 @@ class IndexController extends ApiController
         return view('web.index', compact('list', 'column', 'hits'));
     }
 
+    /**
+     * 分类文章列表
+     * @param  Request $request
+     * @return Respanse
+     */
     public function listing(Request $request)
     {
         $columnall = Columns::where('id', $request->id);
@@ -36,6 +44,11 @@ class IndexController extends ApiController
         return view('web.listing', compact('listcolumn', 'list', 'column', 'hits'));
     }
 
+    /**
+     * 博客文章内容页面
+     * @param  Request $request
+     * @return response
+     */
     public function show(Request $request)
     {
         $shows = Articles::where('id', $request->id)->first();
@@ -48,11 +61,19 @@ class IndexController extends ApiController
 
     }
 
+    /**
+     * 博客栏目
+     * @return mixed
+     */
     public function columns()
     {
         return $column = Columns::with('childrenColumns')->get();
     }
 
+    /**
+     * 博客文章内容浏览量
+     * @return mixed
+     */
     public function hits()
     {
         return Articles::take(10)->orderBy('hit', 'desc')->get();

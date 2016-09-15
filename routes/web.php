@@ -47,7 +47,7 @@ Route::group(['middleware' => ['web', 'admin.login'], 'prefix' => 'admin', 'name
 
     //栏目CRUD
     Route::get('/listcolumn', "ColumnController@columnlist");
-    Route::delete('/deltarticle/{id}', "ColumnController@destroy")->where('id', '[0-9]+');
+    Route::delete('/deltcolumn/{id}', "ColumnController@destroy")->where('id', '[0-9]+');
     Route::get('/addcolumn', "ColumnController@columnadd");
     Route::post('/columnstore', "ColumnController@store");
     Route::get('/editcolumn/{id}', "ColumnController@edit")->where('id', '[0-9]+');

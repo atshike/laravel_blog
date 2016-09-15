@@ -20,6 +20,7 @@ class CreateColumnsTable extends Migration
             $table->string('title',100)->nullable();
             $table->unsignedInteger('type_id');
             $table->timestamps();
+            $table->engine  = 'MyISAM';
         });
     }
 
